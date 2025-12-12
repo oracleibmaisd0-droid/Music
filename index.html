@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca musical</title>
+<link rel="icon" href="https://img.icons8.com/fluency/10000/apple-music.png">
+<style>
+  body {
+    background: #000;
+    font-family: Arial;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .musicCard {
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  .responsive-canvas {
+    width: 100%;
+    aspect-ratio: 1 / 1;   /* Mantiene proporción cuadrada */
+    display: block;
+    border-radius: 10px;
+    background: #000;
+  }
+  button {
+    background: #222;
+    color: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 8px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s ease;
+    box-shadow: 0 0 10px rgba(255,255,255,0);
+  }
+  button:hover {
+    border-color: #555;
+    box-shadow: 0 0 6px rgba(255,255,255,0.3);
+  }
+  button:active {
+    transform: scale(0.97);
+    background: #222;
+    box-shadow: 0 0 20px rgba(255,255,255,0.7);
+  }
+  .fileNameDisplay {
+    font-size: 12px;
+    margin: 5px 0;
+    color: #fff;
+  }
+  .progress-container {
+    width: 100%;
+    height: 18px;
+    background: #222;
+    border-radius: 9px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .progress-container.show { opacity: 1; }
+  .progress-container span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    z-index: 2;
+  }
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #00aaff;
+    border-radius: 9px 0 0 9px;
+    transition: width 0.1s linear, background 0.5s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  summary {
+    background: #111;
+    color: #fff;
+    padding: 12px 15px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    transition: border-color 0.3s, background 0.3s;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { border-color: #555; background: #181818; }
+  summary::after {
+    content: "▼";
+    float: right;
+    font-size: 14px;
+    transition: transform 0.3s;
+  }
+  summary.open::after { transform: rotate(180deg); }
+  .contentWrapper {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
+  }
+  .contentWrapper.open {
+    max-height: 2000px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  h1 { text-align: center; }
+  h5 { text-align: justify; }
+</style>
+</head>
+<body>
+
+<h1>Biblioteca musical</h1>
+<h5>En esta biblioteca musical se presenta música alternativa de nuestra selección. Sumérgete en las Musas de la música y el sonido, déjate conmover por las emociones y la imaginación.</h5>
+
+<!-- Primera sección -->
+<div class="detail-wrapper">
+  <summary class="summary">Armónico</summary>
+  <div class="contentWrapper">
+    <div class="gallery">
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/9bfoy4tfhewxtn6e9zs8f/David-De-Michele-_-Moving-Beyond.mp3?rlkey=880aduaiyee5f6ybkncgvzdq2">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/zt4h0jt8zw37v12tchr7d/David-De-Michele-_-Isles-In-the-Mist.mp3?rlkey=jsa84wqqbdiucn0dbx6nn64p6">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="detail-wrapper">
+  <summary class="summary">Electrónico y artificial</summary>
+  <div class="contentWrapper">
+    <div class="gallery">
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/8r5vy96edc58c7ni6ycx5/Skrillex-_-Fred-again-And-Flowdan-_-Rumble.mp3?rlkey=l1l6a0vnomxqdlxzp4zvgnfyk">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/n12bg9jgl31pxtgbj56c2/Papatinho-feat-_-Steve-Aoki-_-Kevin-O-Chris-_-Anitta-_-Caverinha.mp3?rlkey=9wgzrf0gomymvp2g96hnt9sz6">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+            <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/ejome0wnkeq5nywx348jw/Fils-des-Etoiles-_-The-Light-From-The-Unknown.mp3?rlkey=92b7kr8s5bnkzaoq1syj6ystg">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+            <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/4b0jkhfhywwt572o883e9/Human-_-Rex-Banner.mp3?rlkey=vt8h5b280e9ji7ma98bbyvhjq">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Mostrar nombres de archivo y reemplazar guiones por espacios
+document.querySelectorAll(".musicCard").forEach(card => {
+  const box = card.querySelector(".fileNameDisplay");
+  if (card.dataset.audio) {
+    const url = card.dataset.audio;
+    let cleanName = decodeURIComponent(url.split("/").pop().split(".mp3")[0]);
+    cleanName = cleanName.replace(/-/g, ' ');
+    box.textContent = cleanName;
+  }
+});
+
+// Fade + Slide summary
+document.querySelectorAll('.detail-wrapper').forEach(wrapper=>{
+  const summary = wrapper.querySelector('.summary');
+  const content = wrapper.querySelector('.contentWrapper');
+  summary.addEventListener('click', ()=>{
+    content.classList.toggle('open');
+    summary.classList.toggle('open');
+  });
+});
+</script>
+
+<script>
+// Visualizador musical
+const baseColors = [
+  [255,0,0],[255,127,0],[255,255,0],
+  [0,255,0],[0,0,255],[75,0,130],[148,0,211]
+];
+function lerp(a,b,t){return a+(b-a)*t;}
+function drawArcSegment(ctx,cx,cy,radius,start,end,color){
+  ctx.beginPath();
+  ctx.lineWidth = 20;
+  ctx.strokeStyle=color;
+  ctx.arc(cx,cy,radius,start,end);
+  ctx.stroke();
+}
+
+let currentAudioCard = null;
+
+document.querySelectorAll(".musicCard").forEach(card=>{
+  const canvas = card.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const playBtn = card.querySelector(".playBtn");
+  const stopBtn = card.querySelector(".stopBtn");
+  const progressContainer = card.querySelector(".progress-container");
+  const progressBar = card.querySelector(".progress-bar");
+  const progressText = progressContainer.querySelector("span");
+
+  let audioContext, analyser, audioBufferSource, gainNode;
+  let currentColors = baseColors.map(c=>[...c]);
+  let rotation = 0, lastDirection=1, lastPeak=0;
+  let globalOpacity=0, fadingIn=false, fadingOut=false;
+  const FADE_SPEED=0.03, FADE_AUDIO_TIME=1.0;
+
+  // Ajuste automático canvas al contenedor (cuadrado)
+  function resizeCanvas() {
+    const size = canvas.parentElement.clientWidth;
+    canvas.width = size;
+    canvas.height = size;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function startFadeIn(){fadingOut=false;fadingIn=true;}
+  function startFadeOut(callback=null){fadingIn=false;fadingOut=true;
+    const check=setInterval(()=>{if(globalOpacity<=0){clearInterval(check);if(callback)callback();}},50);
+  }
+
+  function draw(){
+    requestAnimationFrame(draw);
+    if(!analyser) return;
+    if(fadingIn && globalOpacity<1) globalOpacity+=FADE_SPEED;
+    if(fadingOut && globalOpacity>0) globalOpacity-=FADE_SPEED;
+    globalOpacity = Math.max(0,Math.min(1,globalOpacity));
+    ctx.globalAlpha = globalOpacity;
+
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(data);
+
+    const blockSize = Math.floor(data.length / baseColors.length);
+    const noteAmps = baseColors.map((_,i)=>{
+      let sum=0; for(let j=0;j<blockSize;j++) sum+=data[i*blockSize+j]; return sum/blockSize;
+    });
+
+    const totalAmp = noteAmps.reduce((a,b)=>a+b,1);
+    const avgAmp = totalAmp / noteAmps.length;
+    const cx = canvas.width/2;
+    const cy = canvas.height/2;
+    const baseRadius = 80 + totalAmp/15;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const peakThreshold=15;
+    let peak=Math.max(...noteAmps);
+    if(peak-lastPeak>peakThreshold) lastDirection*=-1;
+    lastPeak=peak;
+
+    const minSpeed=0.005, maxSpeed=0.04;
+    const speed = minSpeed + (avgAmp/200)*(maxSpeed-minSpeed);
+    rotation += lastDirection*Math.min(speed,maxSpeed);
+
+    const FULL=Math.PI*2;
+    const time = audioContext.currentTime*0.5;
+    const targetColors = baseColors.map((baseColor,i)=>{
+      const r=(baseColor[0]+Math.sin(time+i)*100)%256;
+      const g=(baseColor[1]+Math.sin(time+i+1)*100)%256;
+      const b=(baseColor[2]+Math.sin(time+i+2)*100)%256;
+      return [r,g,b];
+    });
+
+    const smoothFactor=1/15;
+    currentColors = currentColors.map((c,i)=>[
+      lerp(c[0],targetColors[i][0],smoothFactor),
+      lerp(c[1],targetColors[i][1],smoothFactor),
+      lerp(c[2],targetColors[i][2],smoothFactor)
+    ]);
+
+    const parts = currentColors.map((color,i)=>{
+      return {ratio: noteAmps[i]/totalAmp, color};
+    }).filter(p=>p.ratio>0);
+
+    const totalActive = parts.reduce((a,e)=>a+e.ratio,0);
+    parts.forEach(p=>p.ratio/=totalActive);
+
+    let acc=0;
+    for(let i=0;i<parts.length;i++){
+      const p=parts[i];
+      const start=rotation+FULL*acc;
+      acc+=p.ratio;
+      const end=rotation+FULL*acc;
+      const subSegs=50;
+      for(let s=0;s<subSegs;s++){
+        const t=s/subSegs;
+        const nextColor=parts[(i+1)%parts.length].color;
+        const r=p.color[0]*(1-t)+nextColor[0]*t;
+        const g=p.color[1]*(1-t)+nextColor[1]*t;
+        const b=p.color[2]*(1-t)+nextColor[2]*t;
+        drawArcSegment(ctx,cx,cy,baseRadius,start+(end-start)*s/subSegs,start+(end-start)*(s+1)/subSegs,`rgb(${r},${g},${b})`);
+      }
+    }
+    ctx.globalAlpha=1;
+  }
+  draw();
+
+  playBtn.onclick = async ()=>{
+    if(currentAudioCard && currentAudioCard !== card){
+      currentAudioCard.querySelector(".stopBtn").click();
+    }
+    currentAudioCard = card;
+
+    progressContainer.classList.add("show");
+    progressBar.style.width = "0%";
+    progressBar.style.background = "#00aaff";
+    progressText.textContent = "Cargando…";
+
+    try {
+      if(audioContext) await audioContext.close();
+      audioContext = new AudioContext();
+      analyser = audioContext.createAnalyser();
+      analyser.fftSize = 1024;
+      gainNode = audioContext.createGain();
+      gainNode.gain.value = 1;
+
+      const response = await fetch(card.dataset.audio);
+      const reader = response.body.getReader();
+      const contentLength = +response.headers.get("Content-Length") || 1;
+      let receivedLength = 0;
+      let chunks = [];
+      while(true){
+        const {done, value} = await reader.read();
+        if(done) break;
+        chunks.push(value);
+        receivedLength += value.length;
+        let percent = Math.floor(receivedLength / contentLength * 100);
+        progressBar.style.width = percent + "%";
+      }
+
+      // Cambio barra a verde cuando descarga completa
+      progressBar.style.background = "#00ff00";
+      progressText.textContent = "Listo. PROCESANDO…";
+
+      const audioData = new Uint8Array(chunks.reduce((a,c)=>a+c.length,0));
+      let position = 0;
+      for(let chunk of chunks){
+        audioData.set(chunk, position);
+        position += chunk.length;
+      }
+
+      const audioBuffer = await audioContext.decodeAudioData(audioData.buffer);
+      audioBufferSource = audioContext.createBufferSource();
+      audioBufferSource.buffer = audioBuffer;
+      audioBufferSource.connect(gainNode);
+      gainNode.connect(analyser);
+      analyser.connect(audioContext.destination);
+
+      audioBufferSource.start();
+      progressContainer.classList.remove("show");
+      audioBufferSource.onended = ()=>{ startFadeOut(()=>ctx.clearRect(0,0,canvas.width,canvas.height)); };
+
+      globalOpacity=0;
+      startFadeIn();
+
+    } catch(err){
+      console.error(err);
+      progressBar.style.background = "#ff0000";
+      progressText.textContent = "Error";
+    }
+  };
+
+  stopBtn.onclick = ()=>{
+    if(!audioContext) return;
+    if(audioBufferSource){
+      gainNode.gain.linearRampToValueAtTime(0,audioContext.currentTime+FADE_AUDIO_TIME);
+    }
+    startFadeOut(()=>{
+      try{if(audioBufferSource) audioBufferSource.stop();}catch(e){}
+      audioBufferSource=null; gainNode=null;
+      audioContext.close(); audioContext=null;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      rotation=0; lastPeak=0; lastDirection=1;
+      if(currentAudioCard === card) currentAudioCard = null;
+      progressContainer.classList.remove("show");
+      progressBar.style.width = "0%";
+    });
+  };
+});
+</script>
+</body>
+</html>
