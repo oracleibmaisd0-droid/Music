@@ -6,7 +6,10 @@
 <title>Biblioteca musical</title>
 <link rel="icon" href="https://img.icons8.com/fluency/10000/apple-music.png">
 <style>
-  body {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
     background: #000;
     font-family: Arial;
     color: #fff;
@@ -27,7 +30,7 @@
   }
   .responsive-canvas {
     width: 100%;
-    aspect-ratio: 1 / 1;   /* Mantiene proporción cuadrada */
+    aspect-ratio: 1 / 1;
     display: block;
     border-radius: 10px;
     background: #000;
@@ -233,19 +236,25 @@ document.querySelectorAll(".musicCard").forEach(card => {
   }
 });
 
-// Fade + Slide summary
-document.querySelectorAll('.detail-wrapper').forEach(wrapper=>{
-  const summary = wrapper.querySelector('.summary');
-  const content = wrapper.querySelector('.contentWrapper');
-  summary.addEventListener('click', ()=>{
-    content.classList.toggle('open');
+// Expansión dinámica de secciones con scroll
+document.querySelectorAll('.summary').forEach(summary => {
+  const content = summary.nextElementSibling;
+  summary.addEventListener('click', () => {
+    if(content.classList.contains('open')){
+      content.style.maxHeight = null;
+      content.classList.remove('open');
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
+      summary.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     summary.classList.toggle('open');
   });
 });
 </script>
 
 <script>
-// Visualizador musical
+// Visualizador musical + Play/Stop con barra de progreso real
 const baseColors = [
   [255,0,0],[255,127,0],[255,255,0],
   [0,255,0],[0,0,255],[75,0,130],[148,0,211]
@@ -276,7 +285,6 @@ document.querySelectorAll(".musicCard").forEach(card=>{
   let globalOpacity=0, fadingIn=false, fadingOut=false;
   const FADE_SPEED=0.03, FADE_AUDIO_TIME=1.0;
 
-  // Ajuste automático canvas al contenedor (cuadrado)
   function resizeCanvas() {
     const size = canvas.parentElement.clientWidth;
     canvas.width = size;
@@ -385,11 +393,12 @@ document.querySelectorAll(".musicCard").forEach(card=>{
       gainNode = audioContext.createGain();
       gainNode.gain.value = 1;
 
+      // Descarga y progreso
       const response = await fetch(card.dataset.audio);
-      const reader = response.body.getReader();
       const contentLength = +response.headers.get("Content-Length") || 1;
+      const reader = response.body.getReader();
       let receivedLength = 0;
-      let chunks = [];
+      const chunks = [];
       while(true){
         const {done, value} = await reader.read();
         if(done) break;
@@ -399,11 +408,10 @@ document.querySelectorAll(".musicCard").forEach(card=>{
         progressBar.style.width = percent + "%";
       }
 
-      // Cambio barra a verde cuando descarga completa
       progressBar.style.background = "#00ff00";
       progressText.textContent = "Listo. PROCESANDO…";
 
-      const audioData = new Uint8Array(chunks.reduce((a,c)=>a+c.length,0));
+      const audioData = new Uint8Array(receivedLength);
       let position = 0;
       for(let chunk of chunks){
         audioData.set(chunk, position);
@@ -419,10 +427,10 @@ document.querySelectorAll(".musicCard").forEach(card=>{
 
       audioBufferSource.start();
       progressContainer.classList.remove("show");
-      audioBufferSource.onended = ()=>{ startFadeOut(()=>ctx.clearRect(0,0,canvas.width,canvas.height)); };
-
       globalOpacity=0;
       startFadeIn();
+
+      audioBufferSource.onended = ()=>{ startFadeOut(()=>ctx.clearRect(0,0,canvas.width,canvas.height)); };
 
     } catch(err){
       console.error(err);
@@ -447,6 +455,7 @@ document.querySelectorAll(".musicCard").forEach(card=>{
       progressBar.style.width = "0%";
     });
   };
+
 });
 </script>
 </body>
