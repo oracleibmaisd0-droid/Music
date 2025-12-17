@@ -136,10 +136,11 @@
 <h1>Biblioteca musical</h1>
 <h5>En esta biblioteca musical se presenta música alternativa de nuestra selección. Sumérgete en las Musas de la música y el sonido, déjate conmover por las emociones y la imaginación.</h5>
 
-<!-- Primera sección -->
+<!-- Sección -->
 <div class="detail-wrapper">
   <summary class="summary">Armónico</summary>
   <div class="contentWrapper">
+  <button class="ListBtn" onclick="window.location.href='https://oraclewebmusic-list-armonico.netlify.app';">Reproducir lista</button>
     <div class="gallery">
 
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/mxm7kap1ekada85jveeom/Dead-In-The-Water.mp3?rlkey=fyjujtzlmildw3qj05z68j9e0&raw=1">
@@ -170,6 +171,7 @@
 <div class="detail-wrapper">
   <summary class="summary">Electrónico y artificial</summary>
   <div class="contentWrapper">
+      <button class="ListBtn" onclick="window.location.href='https://oraclewebmusic-list-electronico.netlify.app';">Reproducir lista</button>
     <div class="gallery">
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/kzywse7q0xyw275wrqs7f/MettaKin-_-The-Call.mp3?rlkey=gj46311jlwdl3djv06cp57if3&st=oqf2l293">
         <canvas class="responsive-canvas"></canvas>
@@ -225,6 +227,24 @@
   </div>
 </div>
 
+<div class="detail-wrapper">
+  <summary class="summary">Viajando</summary>
+  <div class="contentWrapper">
+    <div class="gallery">
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/bdpdu8671w2uxkf09rz75/Evlov-_-A-New-Chapter.mp3?rlkey=iep5rx0rvphayu0iuassgflh1&raw=1">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 // Mostrar nombres de archivo y reemplazar guiones por espacios
 document.querySelectorAll(".musicCard").forEach(card => {
@@ -255,7 +275,7 @@ document.querySelectorAll('.summary').forEach(summary => {
 </script>
 
 <script>
-// Visualizador musical + Play/Stop con barra de progreso real
+// Visualizador musical + Play/Stop + Barra de progreso de descarga
 const baseColors = [
   [255,0,0],[255,127,0],[255,255,0],
   [0,255,0],[0,0,255],[75,0,130],[148,0,211]
