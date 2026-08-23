@@ -145,6 +145,26 @@
   <button class="ListBtn" onclick="window.location.href='https://oraclewebmusic-list-armonico.netlify.app';">Reproducir lista</button>
     <div class="gallery">
 
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/62o3lrytk1p1h6s8vbjq4/Kassander-_-Mother-Star.mp3?rlkey=8kcfe0enttijftbq7mfp30dgi&raw=1">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
+      <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/znmnkok629pm10utflyp8/M83-_-Outro.mp3?rlkey=8s8if0p30xr1kko3zffuq3lv3&raw=1">
+        <canvas class="responsive-canvas"></canvas>
+        <div class="fileNameDisplay"></div>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+          <span>Cargando…</span>
+        </div>
+        <button class="playBtn">Play</button>
+        <button class="stopBtn">Stop</button>
+      </div>
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/mxm7kap1ekada85jveeom/Dead-In-The-Water.mp3?rlkey=fyjujtzlmildw3qj05z68j9e0&raw=1">
         <canvas class="responsive-canvas"></canvas>
         <div class="fileNameDisplay"></div>
@@ -255,6 +275,7 @@ document.querySelectorAll(".musicCard").forEach(card => {
     const url = card.dataset.audio;
     let cleanName = decodeURIComponent(url.split("/").pop().split(".mp3")[0]);
     cleanName = cleanName.replace(/-/g, ' ');
+    cleanName = cleanName.replace(/_/g, '-');
     box.textContent = cleanName;
   }
 });
