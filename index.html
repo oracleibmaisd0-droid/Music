@@ -567,6 +567,36 @@ document.querySelectorAll(".musicCard").forEach(card=>{
 
 });
 </script>
+
+<script type="module">
+import {
+  glass,
+  attachPress
+} from "https://cdn.jsdelivr.net/npm/glassy-liquid@0.1.0/+esm";
+
+// TARJETAS MUSICALES
+document.querySelectorAll(".musicCard").forEach(elemento => {
+  glass(elemento, {
+    radius: 10,
+    material: "regular",
+    appearance: "dark",
+    refraction: 18
+  });
+});
+
+// BOTONES
+document.querySelectorAll("button").forEach(elemento => {
+  const superficie = glass(elemento, {
+    radius: 10,
+    material: "clear",
+    appearance: "dark",
+    refraction: 18
+  });
+
+  attachPress(elemento, superficie);
+});
+</script>
+
 </body>
 
   <script>
