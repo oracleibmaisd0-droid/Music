@@ -36,28 +36,7 @@
     border-radius: 10px;
     background: #000;
   }
-  button {
-    background: #222;
-    color: white;
-    border: 2px solid #333;
-    border-radius: 10px;
-    padding: 8px 20px;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Product Sans', sans-serif;
-    transition: all 0.15s ease;
-    box-shadow: 0 0 10px rgba(255,255,255,0);
-  }
-  button:hover {
-    border-color: #555;
-    box-shadow: 0 0 6px rgba(255,255,255,0.3);
-  }
-  button:active {
-    transform: scale(0.97);
-    background: #222;
-    box-shadow: 0 0 20px rgba(255,255,255,0.7);
-  }
+  
   .fileNameDisplay {
     font-size: 12px;
     margin: 5px 0;
@@ -196,6 +175,14 @@
     opacity: .65;
   }
 }
+
+glass-button{
+  touch-action: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
 </style>
 </head>
 <body>
@@ -207,7 +194,9 @@
 <div class="detail-wrapper">
   <summary class="summary">Armónico</summary>
   <div class="contentWrapper">
-  <button class="ListBtn" onclick="window.location.href='https://oraclewebmusic-list-armonico.netlify.app';">Reproducir lista</button>
+<glass-button class="ListBtn" material="clear" appearance="dark" onclick="window.location.href='https://oraclewebmusic-list-armonico.netlify.app';">
+  <span>Reproducir lista</span>
+</glass-button>
     <div class="gallery">
 
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/62o3lrytk1p1h6s8vbjq4/Kassander-_-Mother-Star.mp3?rlkey=8kcfe0enttijftbq7mfp30dgi&raw=1">
@@ -217,8 +206,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/znmnkok629pm10utflyp8/M83-_-Outro.mp3?rlkey=8s8if0p30xr1kko3zffuq3lv3&raw=1">
         <canvas class="responsive-canvas"></canvas>
@@ -227,8 +220,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/mxm7kap1ekada85jveeom/Dead-In-The-Water.mp3?rlkey=fyjujtzlmildw3qj05z68j9e0&raw=1">
         <canvas class="responsive-canvas"></canvas>
@@ -237,8 +234,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/zt4h0jt8zw37v12tchr7d/David-De-Michele-_-Isles-In-the-Mist.mp3?rlkey=jsa84wqqbdiucn0dbx6nn64p6">
         <canvas class="responsive-canvas"></canvas>
@@ -247,8 +248,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
     </div>
   </div>
@@ -258,7 +263,9 @@
 <div class="detail-wrapper">
   <summary class="summary">Electrónico y artificial</summary>
   <div class="contentWrapper">
-      <button class="ListBtn" onclick="window.location.href='https://oraclewebmusic-list-electronico.netlify.app';">Reproducir lista</button>
+<glass-button class="ListBtn" material="clear" appearance="dark" onclick="window.location.href='https://oraclewebmusic-list-electronico.netlify.app';">
+  <span>Reproducir lista</span>
+</glass-button>
     <div class="gallery">
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/kzywse7q0xyw275wrqs7f/MettaKin-_-The-Call.mp3?rlkey=gj46311jlwdl3djv06cp57if3&st=oqf2l293">
         <canvas class="responsive-canvas"></canvas>
@@ -267,8 +274,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>   
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/8r5vy96edc58c7ni6ycx5/Skrillex-_-Fred-again-And-Flowdan-_-Rumble.mp3?rlkey=l1l6a0vnomxqdlxzp4zvgnfyk">
         <canvas class="responsive-canvas"></canvas>
@@ -277,8 +288,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
       <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/n12bg9jgl31pxtgbj56c2/Papatinho-feat-_-Steve-Aoki-_-Kevin-O-Chris-_-Anitta-_-Caverinha.mp3?rlkey=9wgzrf0gomymvp2g96hnt9sz6">
         <canvas class="responsive-canvas"></canvas>
@@ -287,8 +302,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
             <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/ejome0wnkeq5nywx348jw/Fils-des-Etoiles-_-The-Light-From-The-Unknown.mp3?rlkey=92b7kr8s5bnkzaoq1syj6ystg">
         <canvas class="responsive-canvas"></canvas>
@@ -297,8 +316,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
             <div class="musicCard" data-audio="https://dl.dropboxusercontent.com/scl/fi/4b0jkhfhywwt572o883e9/Human-_-Rex-Banner.mp3?rlkey=vt8h5b280e9ji7ma98bbyvhjq">
         <canvas class="responsive-canvas"></canvas>
@@ -307,8 +330,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
     </div>
   </div>
@@ -325,8 +352,12 @@
           <div class="progress-bar"></div>
           <span>Cargando…</span>
         </div>
-        <button class="playBtn">Play</button>
-        <button class="stopBtn">Stop</button>
+<glass-button class="playBtn" material="clear" appearance="dark">
+  <span>Play</span>
+</glass-button>
+<glass-button class="stopBtn" material="clear" appearance="dark">
+  <span>Stop</span>
+</glass-button>
       </div>
     </div>
   </div>
@@ -842,6 +873,13 @@ document.querySelectorAll("[title]").forEach(elemento => {
 
 }
 
+
+
+</script>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/glassy-liquid@0.1/dist/glassy-liquid.min.js">
 </script>
 
 </html>
